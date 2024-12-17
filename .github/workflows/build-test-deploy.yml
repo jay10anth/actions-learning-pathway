@@ -10,3 +10,13 @@ jobs:
         uses: actions/setup-node@v3
       - run: npm install
       - run: npm un build
+  test:
+    needs: hello-world-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: use node.js
+        uses: actions/setup-node@v3
+      - run: npm install
+      - run: npm test

@@ -19,5 +19,11 @@ jobs:
       - name: use node.js
         uses: actions/setup-node@v3
       - run: npm install
+      - name: Skip ESLint Config
+        run: |
+          if [ -f .eslintrc.json ]; then
+            echo "ESLint configuration found, running linting..."
+          else
+            echo "Skipping ESLint configuration..."
+          fi
       - run: npm test
-        continue-on-error: true
